@@ -9,3 +9,16 @@
 .memo-body {
 	background: #c4e2fa;
 }
+
+#setting {
+  display: none;
+}
+
+#setting_hide_button {
+  display: none;
+}
+
+#balance {
+  color: #ff0000;
+  font-weight: bold;
+}
