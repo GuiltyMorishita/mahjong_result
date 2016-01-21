@@ -1,5 +1,14 @@
-Node Static Site 
-====================
- * Node.jsを使った静的サイトのテンプレート
- * public以下にソースを配置
- * heroku等にデプロイして使うといいと思う
+# Heroku Static
+
+Static file site template for Heroku.
+
+## USAGE
+
+    $ git clone git://github.com/komagata/heroku-static.git
+    $ cd heroku-static
+    $ heroku create foo-bar-buz
+    $ git push heroku master
+
+## LISENCE
+
+MIT LISENCE
