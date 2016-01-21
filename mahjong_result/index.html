@@ -46,26 +46,26 @@
             </h3>
             <div class="form-horizontal">
               <div class="form-group">
-                <label class="col-sm-2 control-label">面子1</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">面子1</label>
+                <div class="col-sm-9">
                   <input type="text" id="player1" value="" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">面子2</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">面子2</label>
+                <div class="col-sm-9">
                   <input type="text" id="player2" value="" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">面子3</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">面子3</label>
+                <div class="col-sm-9">
                   <input type="text" id="player3" value="" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">面子4</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">面子4</label>
+                <div class="col-sm-9">
                   <input type="text" id="player4" value="" class="form-control" />
                 </div>
               </div>
@@ -78,14 +78,14 @@
             </h3>
             <div class="form-horizontal">
               <div class="form-group">
-                <label class="col-sm-2 control-label">3位→2位</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">3位→2位[点]</label>
+                <div class="col-sm-9">
                   <input type="number" id="uma32" value="10" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">4位→1位</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">4位→1位[点]</label>
+                <div class="col-sm-9">
                   <input type="number" id="uma41" value="20" class="form-control" />
                 </div>
               </div>
@@ -98,20 +98,20 @@
             </h3>
             <div class="form-horizontal">
               <div class="form-group">
-                <label class="col-sm-2 control-label">持ち(配給原点)</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">持ち(配給原点)[点棒]</label>
+                <div class="col-sm-9">
                   <input type="number" id="mochi" value="25000" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">返し</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">返し(原点)[点棒]</label>
+                <div class="col-sm-9">
                   <input type="number" id="kaeshi" value="30000" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">誰に</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">誰に</label>
+                <div class="col-sm-9">
                   <select class="form-control" id="toWhom">
                     <option value="1">1位</option>
                     <option value="2">2位</option>
@@ -129,8 +129,8 @@
             </h3>
             <div class="form-horizontal">
               <div class="form-group">
-                <label class="col-sm-2 control-label">罰符</label>
-                <div class="col-sm-10">
+                <label class="col-sm-3 control-label">罰符[点オール]</label>
+                <div class="col-sm-9">
                   <input type="number" id="yakitori" value="5" class="form-control" />
                 </div>
               </div>
@@ -139,17 +139,45 @@
 
           <li class="list-group-item">
             <h3>
-              <span class="label label-info">チップ</span>
+              <span class="label label-info">ぶっ飛び(箱割れ)</span>
             </h3>
             <div class="form-horizontal">
               <div class="form-group">
-                <label class="col-sm-2 control-label">1枚当たり</label>
-                <div class="col-sm-10">
-                  <input type="number" id="chip" value="500" class="form-control" />
+                <label class="col-sm-3 control-label">飛ばした人へ[点]</label>
+                <div class="col-sm-9">
+                  <input type="number" id="buttobi" value="10" class="form-control"/>
                 </div>
               </div>
             </div>
           </li>
+
+          <li class="list-group-item">
+            <h3>
+              <span class="label label-info">レート</span>
+            </h3>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">レート(1でピン)</label>
+                <div class="col-sm-9">
+                  <input type="number" id="ratio" value="1" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- <li class="list-group-item">
+            <h3>
+              <span class="label label-info">チップ</span>
+            </h3>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">1枚当たり[￥]</label>
+                <div class="col-sm-9">
+                  <input type="number" id="chip" value="500" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </li> -->
 
           <li class="list-group-item">
             <button type="button" class="btn btn-primary btn-block" id="btnSaveSetting">設定保存</button>
@@ -181,6 +209,12 @@
                   <label>
                     <input type="checkbox" id="player1Yakitori"> 焼き鳥
                   </label>
+                  <label>
+                    <input type="checkbox" id="player1Tobi"> 飛び
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player1Tobashi"> 飛ばし
+                  </label>
                 </div>
               </div>
             </div>
@@ -193,6 +227,12 @@
                 <div class="checkbox">
                   <label>
                     <input type="checkbox" id="player2Yakitori"> 焼き鳥
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player2Tobi"> 飛び
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player2Tobashi"> 飛ばし
                   </label>
                 </div>
               </div>
@@ -207,6 +247,12 @@
                   <label>
                     <input type="checkbox" id="player3Yakitori"> 焼き鳥
                   </label>
+                  <label>
+                    <input type="checkbox" id="player3Tobi"> 飛び
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player3Tobashi"> 飛ばし
+                  </label>
                 </div>
               </div>
             </div>
@@ -220,6 +266,12 @@
                   <label>
                     <input type="checkbox" id="player4Yakitori"> 焼き鳥
                   </label>
+                  <label>
+                    <input type="checkbox" id="player4Tobi"> 飛び
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player4Tobashi"> 飛ばし
+                  </label>
                 </div>
               </div>
             </div>
@@ -227,46 +279,25 @@
         </li>
 
         <li class="list-group-item">
-          <button type="button" class="btn btn-primary btn-block" id="btnAdd">追加</button>
+          <button type="button" class="btn btn-primary" id="btnAdd">　追加　</button>
+          <button type="button" class="btn btn-danger" id="btnDelete">　削除　</button>
+          <button type="button" class="btn btn-warning" id="btnDeleteAll">全て削除</button>
         </li>
       </ul>
     </div>
 
-
-    <!-- テンプレート -->
-    <!-- <div style="display: none;" id="template">
-      <div class="form-group memo-group">
-        <input type="text" class="form-control memo-title" value="%s" />
-        <textarea class="form-control memo-body" rows="3">%s</textarea>
-      </div>
-    </div> -->
-
-    <!-- テンプレート -->
-
-
-    <!-- メモ追加部分 -->
-    <!-- <div class="form-group"> -->
-    <!-- テキスト -->
-    <!-- <input type="text" id="title" class="form-control" placeholder="タイトル" /> -->
-    <!-- テキストエリア -->
-    <!-- <textarea class="form-control" rows="3" placeholder="本文" id="body"></textarea> -->
-    <!-- ボタン -->
-    <!-- <button type="button" class="btn btn-primary btn-block" id="btnAdd">追加</button> -->
-    <!-- </div> -->
-
     <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <tr class="success ">
+      <table class="table table-bordered table-striped text-right">
+        <tr class="info">
+          <th>面子</th>
           <th class="player1Name">名前</th>
           <th class="player2Name">名前</th>
           <th class="player3Name">名前</th>
           <th class="player4Name">名前</th>
         </tr>
-        <tr class="warning result">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr class="warning totalResult">
+        </tr>
+        <tr class="danger totalAmount">
         </tr>
       </table>
     </div>
