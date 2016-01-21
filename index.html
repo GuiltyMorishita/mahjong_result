@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <!-- モバイル用：デバイス幅、拡大縮小禁止 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>麻雀精算アプリ</title>
+
+  <!-- jQuery -->
+  <script src="../lib/jquery.min.js"></script>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/lib/common.css">
+  <!-- 表示の微調整用 -->
+
+  <!-- 外部JavaScript -->
+  <!-- https://github.com/js-cookie/js-cookie -->
+  <script src="js/js.cookie.js"></script>
+
+  <!-- 外部CSS/JavaScript -->
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>麻雀精算アプリ</h1>
+
+    <div class="panel panel-default" id="pnl1">
+      <div class="panel-heading">
+        <h3 class="panel-title">設定
+          <button id="setting_show_button">表示</button>
+          <button id="setting_hide_button">非表示</button>
+        </h3>
+        <font size="2" color="#ff0000">※はじめに設定を行って下さい。</font>
+      </div>
+      <div id="setting">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <h3>
+              <span class="label label-info">面子名</span>
+            </h3>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">面子1</label>
+                <div class="col-sm-9">
+                  <input type="text" id="player1" value="" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">面子2</label>
+                <div class="col-sm-9">
+                  <input type="text" id="player2" value="" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">面子3</label>
+                <div class="col-sm-9">
+                  <input type="text" id="player3" value="" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">面子4</label>
+                <div class="col-sm-9">
+                  <input type="text" id="player4" value="" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <h3>
+              <span class="label label-info">ウマ</span>
+            </h3>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">3位→2位[点]</label>
+                <div class="col-sm-9">
+                  <input type="number" id="uma32" value="10" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">4位→1位[点]</label>
+                <div class="col-sm-9">
+                  <input type="number" id="uma41" value="20" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <h3>
+              <span class="label label-info">オカ</span>
+            </h3>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">持ち(配給原点)[点棒]</label>
+                <div class="col-sm-9">
+                  <input type="number" id="mochi" value="25000" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">返し(原点)[点棒]</label>
+                <div class="col-sm-9">
+                  <input type="number" id="kaeshi" value="30000" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">誰に</label>
+                <div class="col-sm-9">
+                  <select class="form-control" id="toWhom">
+                    <option value="1">1位</option>
+                    <option value="2">2位</option>
+                    <option value="3">3位</option>
+                    <option value="4">4位</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <h3>
+              <span class="label label-info">焼き鳥</span>
+            </h3>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">罰符[点オール]</label>
+                <div class="col-sm-9">
+                  <input type="number" id="yakitori" value="5" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <h3>
+              <span class="label label-info">ぶっ飛び(箱割れ)</span>
+            </h3>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">飛ばした人へ[点]</label>
+                <div class="col-sm-9">
+                  <input type="number" id="buttobi" value="10" class="form-control"/>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <h3>
+              <span class="label label-info">レート</span>
+            </h3>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">レート(1でピン)</label>
+                <div class="col-sm-9">
+                  <input type="number" id="ratio" value="1" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- <li class="list-group-item">
+            <h3>
+              <span class="label label-info">チップ</span>
+            </h3>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">1枚当たり[￥]</label>
+                <div class="col-sm-9">
+                  <input type="number" id="chip" value="500" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </li> -->
+
+          <li class="list-group-item">
+            <button type="button" class="btn btn-primary btn-block" id="btnSaveSetting">設定保存</button>
+          </li>
+
+          <li class="list-group-item">
+            <button type="button" class="btn btn-primary btn-block" id="btnReset">リセット</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">結果入力</h3>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="form-horizontal">
+            <div id="balance"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label player1Name">名前</label>
+              <div class="col-sm-7">
+                <input type="number" id="player1Score" class="form-control playersScore" />
+              </div>
+              <div class="col-sm-3">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" id="player1Yakitori"> 焼き鳥
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player1Tobi"> 飛び
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player1Tobashi"> 飛ばし
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label player2Name">名前</label>
+              <div class="col-sm-7">
+                <input type="number" id="player2Score" value="" class="form-control playersScore" />
+              </div>
+              <div class="col-sm-3">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" id="player2Yakitori"> 焼き鳥
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player2Tobi"> 飛び
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player2Tobashi"> 飛ばし
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label player3Name">名前</label>
+              <div class="col-sm-7">
+                <input type="number" id="player3Score" value="" class="form-control playersScore" />
+              </div>
+              <div class="col-sm-3">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" id="player3Yakitori"> 焼き鳥
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player3Tobi"> 飛び
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player3Tobashi"> 飛ばし
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label player4Name">名前</label>
+              <div class="col-sm-7">
+                <input type="number" id="player4Score" value="" class="form-control playersScore" />
+              </div>
+              <div class="col-sm-3">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" id="player4Yakitori"> 焼き鳥
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player4Tobi"> 飛び
+                  </label>
+                  <label>
+                    <input type="checkbox" id="player4Tobashi"> 飛ばし
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <button type="button" class="btn btn-primary" id="btnAdd">　追加　</button>
+          <button type="button" class="btn btn-danger" id="btnDelete">　削除　</button>
+          <button type="button" class="btn btn-warning" id="btnDeleteAll">全て削除</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped text-right">
+        <tr class="info">
+          <th>面子</th>
+          <th class="player1Name">名前</th>
+          <th class="player2Name">名前</th>
+          <th class="player3Name">名前</th>
+          <th class="player4Name">名前</th>
+        </tr>
+        <tr class="warning totalResult">
+        </tr>
+        <tr class="danger totalAmount">
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</body>
+
+</html>
