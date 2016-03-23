@@ -148,14 +148,14 @@ $(function() {
           resultObj["player" + (i)] -= yakitori_ * (4 - yakitoriCount);
         } else {
           resultObj["player" + (i)] += yakitori_ * yakitoriCount;
-          console.log($.inArray(i, yakitoriArr));
+          // console.log($.inArray(i, yakitoriArr));
         }
       }
     }
 
-    if (tobiPlayerArr.length > 0 && tobashiPlayer == "") {
+    if (tobiPlayerArr.length > 0 && tobashiPlayer != "") {
       tobiPlayerArr.forEach(function(v) {
-        console.log(buttobi_);
+        // console.log(buttobi_);
         resultObj["player" + v] -= buttobi_;
         resultObj[tobashiPlayer] += buttobi_;
       });
@@ -163,7 +163,7 @@ $(function() {
 
 
 
-    console.log(resultObj);
+    // console.log(resultObj);
 
     resultArr_.push(resultObj);
 
