@@ -114,7 +114,12 @@ $(function() {
     var resultObj = {};
     var totalPoint = 0;
     for (var i = 0; i < resultArr.length; i++) {
-      resultArr[i][1] = (Math.round(resultArr[i][1] * 0.001) * 1000 - kaeshi_) * 0.001;
+      if (resultArr[i][1] >= kaeshi_){
+        resultArr[i][1] = (Math.floor(resultArr[i][1] * 0.001) * 1000 - kaeshi_) * 0.001;
+      } else {
+        resultArr[i][1] = (Math.ceil(resultArr[i][1] * 0.001) * 1000 - kaeshi_) * 0.001;
+      }
+
 
       // ウマ
       switch (i) {
