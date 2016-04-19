@@ -137,14 +137,16 @@ $(function() {
           break;
       }
 
-      if (i < 3) {
+      if (i > 0 && i <= 3) {
         totalPoint += resultArr[i][1];
-      } else {
-        totalPoint += resultArr[i][1];
-        resultArr[i][1] -= totalPoint;
       }
 
-      resultObj[resultArr[i][0]] = resultArr[i][1];
+      if (i == 3) {
+        resultObj[resultArr[i][0]] = resultArr[i][1];
+        resultObj[resultArr[0][0]] = totalPoint * -1;
+      } else {
+        resultObj[resultArr[i][0]] = resultArr[i][1];
+      }
 
     }
     if (yakitoriCount > 0) {
